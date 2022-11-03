@@ -3,4 +3,12 @@ extends layout
 block content
   h1= title
   p Not welcome to #{title}
-   a.button(type="button", class="btn btn-secondary")
+  a.button(type="button", class="btn btn-secondary", (click)='doBump()')
+  div(id="Bump the count")
+
+
+    script.
+      const count = 0;
+      function bumpCount() {
+        count =+ 1;
+      }
