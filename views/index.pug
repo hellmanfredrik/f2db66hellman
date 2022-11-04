@@ -3,12 +3,13 @@ extends layout
 block content
   h1= title
   p Not welcome to #{title}
-  a.button(type="button", class="btn btn-secondary", (click)='doBump()')
-  div(id="Bump the count")
+  a.button(type="button", class="btn btn-secondary", onclick='bumpCount()')
+  div(id="Bump the count") #{count}
 
 
     script.
-      const count = 0;
+      var count = 0
       function bumpCount() {
-        count =+ 1;
+        count++;
+        document.getElementById("Bump the count").innerHTML = ("Count " + count + "with bump " + count)
       }
