@@ -3,11 +3,58 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var Costume = require("./models/costume.js"); 
+mongoose = require('mongoose'); 
+var Router = require('./routes/resource.js')
+//Get the default connection 
+var db = mongoose.connection; 
+var app = express();
+
+
+app.use("/resource", Router) 
+//Bind connection to error event  
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
+db.once("open", function(){ 
+console.log("Connection to DB succeeded")}); 
+
+require('dotenv').config(); 
+const connectionString =  process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  {useNewUrlParser: true, useUnifiedTopology: true});
+
+// We can seed the collection if needed on server start 
+async function recreateDB(){ 
+  // Delete everything 
+  await Costume.deleteMany(); 
+ 
+let instance1 = new 
+Costume({costume_type:"cow",  size:'x-large', cost:30}); 
+  instance1.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  }); 
+  let instance2 = new 
+  Costume({costume_type:"ghost",  size:'large', cost:25.4}); 
+instance2.save( function(err,doc) { 
+  if(err) return console.error(err); 
+  console.log("Second object saved") 
+}); 
+let instance3 = new 
+Costume({costume_type:"nurse",  size:'small', cost:12}); 
+instance3.save( function(err,doc) { 
+  if(err) return console.error(err); 
+  console.log("Third object saved") 
+}); 
+} 
+ 
+let reseed = true; 
+if (reseed) { recreateDB();}
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
