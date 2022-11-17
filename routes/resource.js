@@ -14,7 +14,7 @@ router.get('/api', api_controller.api);
 router.delete('/', api_controller.api); 
 
 /* GET detail costume page */ 
-router.get('/detail', costume_controlers.costume_view_one_Page); 
+router.get('/detail', costume_controller.costume_view_one_Page); 
 
  // GET request for one costume. 
 router.get('/costumes/:id', costume_controller.costume_detail); 
