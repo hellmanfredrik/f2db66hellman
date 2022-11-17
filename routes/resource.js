@@ -13,6 +13,12 @@ router.get('/', costume_controller.costume_list);
 router.get('/api', api_controller.api); 
 router.delete('/', api_controller.api); 
 
+/* GET delete costume page */ 
+router.get('/delete', costume_controller.costume_delete_Page); 
+
+/* GET create update page */ 
+router.get('/update', costume_controller.costume_update_Page); 
+
 /* GET create costume page */ 
 router.get('/create', costume_controller.costume_create_Page); 
 
