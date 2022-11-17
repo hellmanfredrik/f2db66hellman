@@ -13,6 +13,9 @@ router.get('/', costume_controller.costume_list);
 router.get('/api', api_controller.api); 
 router.delete('/', api_controller.api); 
 
+/* GET create costume page */ 
+router.get('/create', costume_controller.costume_create_Page); 
+
 /* GET detail costume page */ 
 router.get('/detail', costume_controller.costume_view_one_Page); 
 
