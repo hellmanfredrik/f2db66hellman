@@ -11,6 +11,7 @@ var costume_controller = require('../controllers/costume.js');
 // GET resources base. 
 router.get('/', costume_controller.costume_list); 
 router.get('/api', api_controller.api); 
+router.delete('/', api_controller.api); 
 
  // GET request for one costume. 
 router.get('/costumes/:id', costume_controller.costume_detail); 
