@@ -5,7 +5,8 @@ var Costume = require('../models/costume.js');
 exports.costume_list = async function(req, res) { 
     try{ 
         theCostumes = await Costume.find(); 
-        res.send(theCostumes); 
+        res.render('costumeviewall',  
+        { title: 'Costume Detail', toShow: theCostumes }); 
     } 
     catch(err){ 
         res.status(500); 
